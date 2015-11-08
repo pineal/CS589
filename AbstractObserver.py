@@ -1,7 +1,6 @@
 class AbstractObserver(object):
 
-	def __init__(self,sensorProxies,events):
-		self.sensorProxies=sensorProxies
+	def __init__(self,events):
 		self.events=events
 
 	def notify(self):

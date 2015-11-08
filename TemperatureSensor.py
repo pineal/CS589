@@ -3,7 +3,9 @@ from AbstractSensor import AbstractSensor
 class TemperatureSensor(AbstractSensor):
 
 	def __init__(self):
+		self.data=1
 		pass
 
 	def readData(self):
-		return 1
+		self.data=self.data+1
+		return self.data
