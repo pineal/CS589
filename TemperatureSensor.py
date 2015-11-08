@@ -1,6 +1,6 @@
-import AbstractSensor
+from AbstractSensor import AbstractSensor
 
-class TemperatureSensor(AbstractSensor.AbstractSensor):
+class TemperatureSensor(AbstractSensor):
 
 	def __init__(self):
 		pass

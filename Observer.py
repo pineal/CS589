@@ -1,4 +1,3 @@
 class AbstractObserver(object):
-
-	def notify():
-		raise NotImplementedError( "Should have implemented this" )
+    def notify(self):
+        raise NotImplementedError("Should have implemented this")

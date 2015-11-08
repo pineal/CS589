@@ -1,23 +1,23 @@
-import SensorProxy
-import TemperatureSensor
+from SensorProxy import SensorProxy
+from TemperatureSensor import TemperatureSensor
 # import BuzzerActuator
-import HighTemperatureEvent
-import HighTemperatureObserver
+from HighTemperatureEvent import HighTemperatureEvent
+from HighTemperatureObserver import HighTemperatureObserver
 
 # Sensors
-temperatureSensor = TemperatureSensor.TemperatureSensor()
+temperatureSensor = TemperatureSensor()
 
 # SensorProxies (Initialize with sensor)
-temperatureSensorProxy = SensorProxy.SensorProxy(temperatureSensor, 1)
+temperatureSensorProxy = SensorProxy(temperatureSensor, 1)
 
 # Actuators
 # buzzerActuator=BuzzerActuator()
 
 # Events (Initialize with actuators)
-highTemperatureEvent = HighTemperatureEvent.HighTemperatureEvent()
+highTemperatureEvent = HighTemperatureEvent()
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighTemperatureObserver.HighTemperatureObserver([temperatureSensorProxy],
+highTemperatureObserver = HighTemperatureObserver([temperatureSensorProxy],
                                                                           [highTemperatureEvent])
 
 # Add Observers
