@@ -10,7 +10,7 @@ import time
 
 # Sensors
 temperatureSensor = TemperatureSensor()
-buttonSensor = ButtonSensor()
+buttonSensor = ButtonSensor(3)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
