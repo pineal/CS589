@@ -10,7 +10,7 @@ from Event import Event
 
 
 # Sensors
-temperatureSensor = TemperatureSensor()
+temperatureSensor = TemperatureSensor(0,'C')
 buttonSensor = ButtonSensor(3)
 
 # SensorProxies (Initialize with sensor)
@@ -25,7 +25,7 @@ highTemperatureEvent = Event([buzzerActuator])
 buttonPressedEvent=Event([buzzerActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighTemperatureObserver(temperatureSensorProxy,5,[highTemperatureEvent])
+highTemperatureObserver = HighTemperatureObserver(temperatureSensorProxy,24,[highTemperatureEvent])
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 
 # Add Observers
