@@ -9,7 +9,7 @@ class TemperatureSensor(AbstractSensor):
 		pass
 
 	def readData(self):
-		self.data = temp.value()
+		self.data = tempSensor.value()
 		if(self.unit=='F'):
 			self.data = self.data * 9.0/5.0 + 32.0
 
