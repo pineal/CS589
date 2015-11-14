@@ -32,7 +32,7 @@ buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEv
 temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
-#temperatureSensorProxy.start()
+temperatureSensorProxy.start()
 buttonSensorProxy.start()
 
 while 1:
