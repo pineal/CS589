@@ -1,4 +1,4 @@
-import pyump_grove as grove
+import pyupm_grove as grove
 from AbstractSensor import AbstractSensor
 
 class ButtonSensor(AbstractSensor):
