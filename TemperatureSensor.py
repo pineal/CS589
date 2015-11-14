@@ -12,6 +12,6 @@ class TemperatureSensor(AbstractSensor):
 		self.data = temp.value()
 	    
 	    if(self.unit=='F'):
-	    	fahrenheit = celsius * 9.0/5.0 + 32.0;
-	    	
-		return self.data
+	    	self.data = self.data * 9.0/5.0 + 32.0
+
+	    return self.data
