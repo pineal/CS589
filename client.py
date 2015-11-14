@@ -1,3 +1,6 @@
+import pyump_grove as grove
+import time
+
 from SensorProxy import SensorProxy
 from TemperatureSensor import TemperatureSensor
 from ButtonSensor import ButtonSensor
@@ -6,7 +9,6 @@ from HighTemperatureObserver import HighTemperatureObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from Event import Event
 
-import time
 
 # Sensors
 temperatureSensor = TemperatureSensor()

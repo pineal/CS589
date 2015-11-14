@@ -1,5 +1,5 @@
-from AbstractSensor import AbstractSensor
 import pyump_grove as grove
+from AbstractSensor import AbstractSensor
 
 class ButtonSensor(AbstractSensor):
 
