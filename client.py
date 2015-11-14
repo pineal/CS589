@@ -1,4 +1,3 @@
-import pyump_grove as grove
 import time
 
 from SensorProxy import SensorProxy
