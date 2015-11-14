@@ -1,13 +1,10 @@
 from AbstractSensor import AbstractSensor
+import pyump_grove as grove
 
 class ButtonSensor(AbstractSensor):
 
-	def __init__(self):
-		pass
+	def __init__(self,pin):
+		self.button=grove.GroveButton(pin)
 
 	def readData(self):
-            tmp=raw_input()
-            if(tmp=='a'):
-                return 1
-            else:
-                return 0
+            return self.button.value()

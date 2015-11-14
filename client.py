@@ -6,6 +6,8 @@ from HighTemperatureObserver import HighTemperatureObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from Event import Event
 
+import time
+
 # Sensors
 temperatureSensor = TemperatureSensor()
 buttonSensor = ButtonSensor()
@@ -29,5 +31,8 @@ buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEv
 temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
-temperatureSensorProxy.start()
+#temperatureSensorProxy.start()
 buttonSensorProxy.start()
+
+while 1:
+    time.sleep(5)

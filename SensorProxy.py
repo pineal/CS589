@@ -21,8 +21,8 @@ class SensorProxy(threading.Thread):
 			observer.notify()
 
 	def update(self):
-		print "Updated Sensor Data:" + str(self.data)
 		self.data=self.sensor.readData()
+		print "Updated Sensor Data:" + str(self.data)
 		self.notifyObservers()
 
 	def addObserver(self,observer):
