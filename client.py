@@ -29,7 +29,7 @@ toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator])
-buttonPressedEvent=Event([buzzerActuator,toggleLcdDisplayMenuActuator])
+buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighTemperatureObserver(temperatureSensorProxy,24,[highTemperatureEvent])
