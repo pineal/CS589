@@ -54,7 +54,7 @@ buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
 lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
-lcdDisplay.addDisplayMenu('sound',lightDisplayMenu)
+lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
 
 lcdDisplay.setCurrentDisplayMenu('temperature')
 
