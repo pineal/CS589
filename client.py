@@ -2,6 +2,7 @@ import time
 
 from SensorProxy import SensorProxy
 from TemperatureSensor import TemperatureSensor
+from LightSensor import LightSensor
 from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
