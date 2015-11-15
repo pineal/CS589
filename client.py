@@ -18,10 +18,12 @@ lcdDisplay=LCDDisplay(0x3E, 0x62,1)
 # Sensors
 temperatureSensor = TemperatureSensor(0,'C')
 buttonSensor = ButtonSensor(3)
+lightSensor = LightSensor(1)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
+lightSensorProxy = SensorProxy(lightSensor,0.2)
 
 # Actuators
 buzzerActuator=BuzzerActuator(5)
@@ -40,15 +42,18 @@ temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
 #Display Menus
-temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],["Button Status: ",buttonSensorProxy])
-buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],["Probando"])
+temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],[])
+lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
+buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
+lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
 
 lcdDisplay.setCurrentDisplayMenu('temperature')
 
 temperatureSensorProxy.start()
+lightSensorProxy.start()
 buttonSensorProxy.start()
 lcdDisplay.start()
 while 1:
