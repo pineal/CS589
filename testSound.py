@@ -20,6 +20,7 @@ while(1):
         myMic.printGraph(threshContext)
         if(thresh):
             print "Threshold is ", thresh
+            print "Value is", myMic.value()
 
 # Delete the upmMicrophone object
 del myMic
