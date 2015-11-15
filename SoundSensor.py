@@ -1,7 +1,7 @@
 import pyupm_mic as upmMicrophone
 from AbstractSensor import AbstractSensor
 
-class LightSensor(AbstractSensor):
+class SoundSensor(AbstractSensor):
 
 	def __init__(self,pin):
 		self.soundSensor = upmMicrophone.Microphone(pin)
