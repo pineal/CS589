@@ -3,6 +3,7 @@ import time
 from SensorProxy import SensorProxy
 from TemperatureSensor import TemperatureSensor
 from LightSensor import LightSensor
+from SoundSensor import SoundSensor
 from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
@@ -20,11 +21,13 @@ lcdDisplay=LCDDisplay(0x3E, 0x62,1)
 temperatureSensor = TemperatureSensor(0,'C')
 buttonSensor = ButtonSensor(3)
 lightSensor = LightSensor(1)
+soundSensor = SoundSensor(2)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 lightSensorProxy = SensorProxy(lightSensor,0.2)
+soundSensorProxy = SensorProxy(soundSensor,0.1)
 
 # Actuators
 buzzerActuator=BuzzerActuator(5)
@@ -45,16 +48,19 @@ buttonSensorProxy.addObserver(buttonPressedObserver)
 #Display Menus
 temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],[])
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
+soundDisplayMenu=LCDDisplayMenu(["Sound Level:",soundSensorProxy],[])
 buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
 lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
+lcdDisplay.addDisplayMenu('sound',lightDisplayMenu)
 
 lcdDisplay.setCurrentDisplayMenu('temperature')
 
 temperatureSensorProxy.start()
 lightSensorProxy.start()
+soundSensorProxy.start()
 buttonSensorProxy.start()
 lcdDisplay.start()
 while 1:
