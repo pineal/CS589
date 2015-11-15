@@ -11,11 +11,11 @@ class LCDDisplayMenu(object):
 		for entity in firstLineEntities:
 			if(isinstance(entity,SensorProxy)):
 				self.firstLine+=str(entity.data)
-			else if(isinstance(entity,str)):
+			elif(isinstance(entity,str)):
 				self.firstLine+=entity
 
 		for entity in secondLineEntities:
 			if(isinstance(entity,SensorProxy)):
 				self.secondLine+=str(entity.data)
-			else if(isinstance(entity,str)):
+			elif(isinstance(entity,str)):
 				self.secondLine+=entity
