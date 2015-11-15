@@ -1,12 +1,13 @@
 import pyupm_i2clcd as lcd
 from AbstractDisplay import AbstractDisplay
+from MyOrderedDict import MyOrderedDict
 
 class LCDDisplay(AbstractDisplay):
 
 	def __init__(self,lcd_address,rgb_address,period):
 		super(LCDDisplay,self).__init__(period)
 		self.lcdDisplay=lcd.Jhd1313m1(0, lcd_address, rgb_address)
-		self.displayMenus={}
+		self.displayMenus=MyOrderedDict()
 
 	def render(self):
 		print "Rendering..."
@@ -23,3 +24,6 @@ class LCDDisplay(AbstractDisplay):
 	def setCurrentDisplayMenu(self,displayMenuName):
 		self.currentDisplayMenu=self.displayMenus[displayMenuName]
 		self.render()
+
+	def toggleDisplayMenu():
+		setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenu))

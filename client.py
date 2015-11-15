@@ -4,6 +4,7 @@ from SensorProxy import SensorProxy
 from TemperatureSensor import TemperatureSensor
 from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
+from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
 from HighTemperatureObserver import HighTemperatureObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from Event import Event
@@ -22,10 +23,11 @@ buttonSensorProxy = SensorProxy(buttonSensor, 1)
 
 # Actuators
 buzzerActuator=BuzzerActuator()
+toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator])
-buttonPressedEvent=Event([buzzerActuator])
+buttonPressedEvent=Event([buzzerActuator,toggleDisplayMenuActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighTemperatureObserver(temperatureSensorProxy,24,[highTemperatureEvent])
