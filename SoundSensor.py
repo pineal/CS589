@@ -16,6 +16,5 @@ class SoundSensor(AbstractSensor):
 			len = self.soundSensor.getSampledWindow(2, 128, buffer);
 			if len:
 				thresh = self.soundSensor.findThreshold(self.threshContext, 30, buffer, len)
-				self.soundSensor.printGraph(self.threshContext)
 				if(thresh):
 					return thresh
