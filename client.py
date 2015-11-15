@@ -40,7 +40,7 @@ lcdDisplay=LCDDisplay(0x3E, 0x62,1)
 
 #Display Menus
 temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],[])
-buttonDisplayMenu=LCDDisplayMenu(["Button Status",buttonSensorProxy])
+buttonDisplayMenu=LCDDisplayMenu(["Button Status",buttonSensorProxy],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',temperatureDisplayMenu)
