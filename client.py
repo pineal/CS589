@@ -24,7 +24,7 @@ temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 
 # Actuators
-buzzerActuator=BuzzerActuator(2)
+buzzerActuator=BuzzerActuator(5)
 toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 # Events (Initialize with actuators)
