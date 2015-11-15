@@ -41,7 +41,7 @@ buttonSensorProxy.addObserver(buttonPressedObserver)
 
 #Display Menus
 temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],["Button Status: ",buttonSensorProxy])
-buttonDisplayMenu=LCDDisplayMenu(["Button Status",buttonSensorProxy],[])
+buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',temperatureDisplayMenu)

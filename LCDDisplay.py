@@ -10,7 +10,6 @@ class LCDDisplay(AbstractDisplay):
 		self.displayMenus=MyOrderedDict()
 
 	def render(self):
-		print "Rendering..."
 		self.lcdDisplay.setColor(255, 0, 0)
 		self.currentDisplayMenu.render()
 		self.lcdDisplay.setCursor(0,0)
@@ -22,8 +21,10 @@ class LCDDisplay(AbstractDisplay):
 		self.displayMenus[displayMenuName]=displayMenu
 
 	def setCurrentDisplayMenu(self,displayMenuName):
+		print "Set" + displayMenuName
 		self.currentDisplayMenu=self.displayMenus[displayMenuName]
 		self.render()
 
 	def toggleDisplayMenu():
+		print "Toggling"
 		setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenu))
