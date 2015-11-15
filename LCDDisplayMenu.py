@@ -8,6 +8,8 @@ class LCDDisplayMenu(object):
 		self.secondLine=""
 
 	def render(self):
+		self.firstLine=""
+		self.secondLine=""
 		for entity in self.firstLineEntities:
 			if(isinstance(entity,SensorProxy)):
 				self.firstLine+=str(entity.data)
