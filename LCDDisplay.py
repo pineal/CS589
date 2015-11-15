@@ -20,6 +20,6 @@ class LCDDisplay(AbstractDisplay):
 	def addDisplayMenu(self,displayMenuName,displayMenu):
 		self.displayMenus[displayMenuName]=displayMenu
 
-	def setCurrentDisplayMenu(displayMenuName):
+	def setCurrentDisplayMenu(self,displayMenuName):
 		self.currentDisplayMenu=displayMenus[displayMenuName]
 		self.render()
