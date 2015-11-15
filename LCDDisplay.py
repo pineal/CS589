@@ -11,6 +11,7 @@ class LCDDisplay(AbstractDisplay):
 		self.displayMenus=MyOrderedDict()
 
 	def render(self):
+		self.lcdDisplay.clear()
 		self.currentDisplayMenu.render()
 		self.lcdDisplay.setCursor(0,0)
 		self.lcdDisplay.write(self.currentDisplayMenu.firstLine)
@@ -21,7 +22,6 @@ class LCDDisplay(AbstractDisplay):
 		self.displayMenus[displayMenuName]=displayMenu
 
 	def setCurrentDisplayMenu(self,displayMenuName):
-		self.lcdDisplay.clear()
 		self.currentDisplayMenuName=displayMenuName
 		self.currentDisplayMenu=self.displayMenus[displayMenuName]
 		self.render()
