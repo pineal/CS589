@@ -4,7 +4,7 @@ import pyupm_buzzer as upmBuzzer
 class BuzzerActuator(AbstractActuator):
 
 	def __init__(object,pin):
-		self.buzzer=upmBuzzer(pin)
+		self.buzzer=upmBuzzer.Buzzer(pin)
 
 	def trigger(self):
 		print "Bzzzzzzzz"
