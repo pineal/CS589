@@ -21,7 +21,7 @@ buttonSensor = ButtonSensor(3)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
-buttonSensorProxy = SensorProxy(buttonSensor, 1)
+buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 
 # Actuators
 buzzerActuator=BuzzerActuator()
