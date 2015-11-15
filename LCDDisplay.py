@@ -27,4 +27,4 @@ class LCDDisplay(AbstractDisplay):
 
 	def toggleDisplayMenu(self):
 		print "Toggling"
-		setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenu))
+		self.setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenu))
