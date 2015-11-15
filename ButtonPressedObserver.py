@@ -8,7 +8,6 @@ class ButtonPressedObserver(AbstractObserver):
             self.released=True
 
 	def notify(self):
-            print "ButtonPressedObserver Notified"
             if(self.released==True and self.buttonSensorProxy.data==1):
             	self.released=False
                 for e in self.events:

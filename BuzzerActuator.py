@@ -8,4 +8,4 @@ class BuzzerActuator(AbstractActuator):
 
 	def trigger(self):
 		print "Bzzzzzzzz"
-		self.buzzer.playSound(upmBuzzer.DO,1000000)
+		self.buzzer.playSound(upmBuzzer.DO,500000)
