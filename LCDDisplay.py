@@ -14,7 +14,7 @@ class LCDDisplay(AbstractDisplay):
 		self.currentDisplayMenu.render()
 		self.lcdDisplay.setCursor(0,0)
 		self.lcdDisplay.write(self.currentDisplayMenu.firstLine)
-		self.lcdDisplat.setCursor(1,0)
+		self.lcdDisplay.setCursor(1,0)
 		self.lcdDisplay.write(self.currentDisplayMenu.secondLine)
 
 	def addDisplayMenu(self,displayMenuName,displayMenu):
