@@ -2,7 +2,7 @@ import time
 import pyupm_mic as upmMicrophone 
 
 # Attach microphone to analog port A0
-myMic = upmMicrophone.Microphone(0)
+myMic = upmMicrophone.Microphone(2)
 threshContext = upmMicrophone.thresholdContext()
 threshContext.averageReading = 0
 threshContext.runningAverage = 0
