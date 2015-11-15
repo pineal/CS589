@@ -8,13 +8,13 @@ class LCDDisplayMenu(object):
 		self.secondLine=""
 
 	def render(self):
-		for entity in firstLineEntities:
+		for entity in self.firstLineEntities:
 			if(isinstance(entity,SensorProxy)):
 				self.firstLine+=str(entity.data)
 			elif(isinstance(entity,str)):
 				self.firstLine+=entity
 
-		for entity in secondLineEntities:
+		for entity in self.secondLineEntities:
 			if(isinstance(entity,SensorProxy)):
 				self.secondLine+=str(entity.data)
 			elif(isinstance(entity,str)):
