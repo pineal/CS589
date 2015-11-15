@@ -22,7 +22,7 @@ class SensorProxy(threading.Thread):
 
 	def update(self):
 		self.data=self.sensor.readData()
-		print "Updated Sensor Data:" + str(self.data)
+		#print "Updated Sensor Data:" + str(self.data)
 		self.notifyObservers()
 
 	def addObserver(self,observer):

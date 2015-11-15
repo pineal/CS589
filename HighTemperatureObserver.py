@@ -8,7 +8,6 @@ class HighTemperatureObserver(AbstractObserver):
             self.highValue=highValue
 
 	def notify(self):
-            print "HighTemperatureObserver Notified"
             if(self.temperatureSensorProxy.data>self.highValue):
                 for e in self.events:
                     if(e.thrown==False):
