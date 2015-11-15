@@ -6,7 +6,6 @@ class TemperatureSensor(AbstractSensor):
 	def __init__(self,pin,unit):
 		self.tempSensor = grove.GroveTemp(pin)
 		self.unit = unit
-		pass
 
 	def readData(self):
 		self.data = self.tempSensor.value()

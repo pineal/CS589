@@ -3,10 +3,8 @@ from AbstractSensor import AbstractSensor
 
 class LightSensor(AbstractSensor):
 
-	def __init__(self,pin,unit):
+	def __init__(self,pin):
 		self.lightSensor = grove.GroveLight(pin)
-		self.unit = unit
-		pass
 
 	def readData(self):
 		self.data = self.lightSensor.value()
