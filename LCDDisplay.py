@@ -21,10 +21,9 @@ class LCDDisplay(AbstractDisplay):
 		self.displayMenus[displayMenuName]=displayMenu
 
 	def setCurrentDisplayMenu(self,displayMenuName):
-		print "Set" + displayMenuName
+		self.currentDisplayMenuName=displayMenuName
 		self.currentDisplayMenu=self.displayMenus[displayMenuName]
 		self.render()
 
 	def toggleDisplayMenu(self):
-		print "Toggling"
-		self.setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenu))
+		self.setCurrentDisplayMenu(self.displayMenus.nextKey(self.currentDisplayMenuName))
