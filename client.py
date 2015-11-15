@@ -8,6 +8,9 @@ from HighTemperatureObserver import HighTemperatureObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from Event import Event
 
+from LCDDisplayMenu import LCDDisplayMenu
+from LCDDisplay import LCDDisplay
+
 
 # Sensors
 temperatureSensor = TemperatureSensor(0,'C')
@@ -32,8 +35,20 @@ buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEv
 temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
+#Display
+lcdDisplay=LCDDisplay(0x3E, 0x62,1)
+
+#Display Menus
+temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"])
+buttonDisplayMenu=LCDDisplayMenu(["Button Status",buttonSensorProxy])
+
+lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
+lcdDisplay.addDisplayMenu('button',temperatureDisplayMenu)
+
+lcdDisplay.setCurrentDisplayMenu('temperature')
+
 temperatureSensorProxy.start()
 buttonSensorProxy.start()
-
+lcdDisplay.start()
 while 1:
     time.sleep(5)
