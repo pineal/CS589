@@ -5,7 +5,6 @@ class AirSensor(AbstractSensor):
 
 	def __init__(self,pin):
 		self.airSensor = TP401.TP401(pin)
-		self.precision = precision
 
 	def readData(self):
 
