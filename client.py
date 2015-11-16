@@ -26,7 +26,7 @@ soundSensor = SoundSensor(2)
 airSensor=AirSensor(3)
 
 # SensorProxies (Initialize with sensor)
-temperatureSensorProxy = SensorProxy(temperatureSensor, 2,1,5)
+temperatureSensorProxy = SensorProxy(temperatureSensor, 2,1,10)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 lightSensorProxy = SensorProxy(lightSensor,0.2)
 soundSensorProxy = SensorProxy(soundSensor,0.1)
