@@ -9,6 +9,7 @@ from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
 from HighValueObserver import HighValueObserver
+from LowValueObserver import LowValueObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from ChangeLCDDisplayMenuBackgroundColorActuator import ChangeLCDDisplayMenuBackgroundColorActuator
 from Event import Event
