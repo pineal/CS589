@@ -30,7 +30,7 @@ temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 lightSensorProxy = SensorProxy(lightSensor,0.2)
 soundSensorProxy = SensorProxy(soundSensor,0.1)
-airSensorProxy = SensorProxy(airSensor,1,20)
+airSensorProxy = SensorProxy(airSensor,1,2,20)
 
 # Actuators
 buzzerActuator=BuzzerActuator(5)
