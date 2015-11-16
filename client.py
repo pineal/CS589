@@ -8,7 +8,7 @@ from SoundSensor import SoundSensor
 from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
-from HighTemperatureObserver import HighTemperatureObserver
+from HighValueObserver import HighValueObserver
 from ButtonPressedObserver import ButtonPressedObserver
 from Event import Event
 
@@ -41,7 +41,7 @@ highTemperatureEvent = Event([buzzerActuator])
 buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighTemperatureObserver(temperatureSensorProxy,24,[highTemperatureEvent])
+highTemperatureObserver = HighValueObserver(temperatureSensorProxy,24,[highTemperatureEvent])
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 
 # Add Observers
@@ -49,7 +49,7 @@ temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
 #Display Menus
-temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C"],[])
+temperatureDisplayMenu=LCDDisplayMenu(["Temp:",temperatureSensorProxy," C"],[])
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
 soundDisplayMenu=LCDDisplayMenu(["Sound Level:",soundSensorProxy],[])
 buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
