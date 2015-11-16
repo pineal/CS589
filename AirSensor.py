@@ -1,6 +1,5 @@
 import pyupm_gas as TP401
 from AbstractSensor import AbstractSensor
-from collections import deque
 
 class AirSensor(AbstractSensor):
 
@@ -13,7 +12,5 @@ class AirSensor(AbstractSensor):
 
 	def readData(self):
 
-		self.readings.append(self.airSensor.getPPM())
-		self.data = sum(self.readings)/float(self.smoothing)
-
+		self.data = self.airSensor.getPPM()
 		return round(self.data, self.precision)
