@@ -53,7 +53,7 @@ temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
 soundDisplayMenu=LCDDisplayMenu(["Sound Level:",soundSensorProxy],[])
 buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
-airDisplayMenu=LCDDisplayMenu(["Air Quality: ",airSensorProxy, " ppm"],[])
+airDisplayMenu=LCDDisplayMenu(["Air: ",airSensorProxy, " ppm"],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
@@ -66,6 +66,7 @@ lcdDisplay.setCurrentDisplayMenu('temperature')
 temperatureSensorProxy.start()
 lightSensorProxy.start()
 soundSensorProxy.start()
+airSensor.start()
 buttonSensorProxy.start()
 lcdDisplay.start()
 while 1:
