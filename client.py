@@ -61,7 +61,7 @@ airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(ai
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
 lowTemperatureEvent = Event([temperatureLowValueNoBackgroundActuator])
-buttonPressedEvent=Event([toggleLcdDisplayMenuActuator,temperatureLowValueRedBackgroundActuator])
+buttonPressedEvent=Event([toggleLcdDisplayMenuActuator,temperatureLowValueNoBackgroundActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighValueObserver(temperatureSensorProxy,20,[highTemperatureEvent])
