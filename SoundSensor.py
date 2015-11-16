@@ -17,4 +17,5 @@ class SoundSensor(AbstractSensor):
 			if len:
 				thresh = self.soundSensor.findThreshold(self.threshContext, 30, buffer, len)
 				if(thresh):
-					return thresh
+					self.data=thresh
+					return self.data

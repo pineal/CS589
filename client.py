@@ -3,6 +3,7 @@ import time
 from SensorProxy import SensorProxy
 from TemperatureSensor import TemperatureSensor
 from LightSensor import LightSensor
+from AirSensor import AirSensor
 from SoundSensor import SoundSensor
 from ButtonSensor import ButtonSensor
 from BuzzerActuator import BuzzerActuator
@@ -22,12 +23,14 @@ temperatureSensor = TemperatureSensor(0,'C')
 buttonSensor = ButtonSensor(3)
 lightSensor = LightSensor(1)
 soundSensor = SoundSensor(2)
+airSensor=AirSensor(3)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
 buttonSensorProxy = SensorProxy(buttonSensor, 0.2)
 lightSensorProxy = SensorProxy(lightSensor,0.2)
 soundSensorProxy = SensorProxy(soundSensor,0.1)
+airSensorProxy = SensorProxy(airSensor,1)
 
 # Actuators
 buzzerActuator=BuzzerActuator(5)
@@ -50,11 +53,13 @@ temperatureDisplayMenu=LCDDisplayMenu(["Temperature:",temperatureSensorProxy," C
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
 soundDisplayMenu=LCDDisplayMenu(["Sound Level:",soundSensorProxy],[])
 buttonDisplayMenu=LCDDisplayMenu(["Button Status: ",buttonSensorProxy],[])
+airDisplayMenu=LCDDisplayMenu(["Air Quality: ",airSensorProxy, " ppm"],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
 lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
 lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
 lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
+lcdDisplay.addDisplayMenu('air',airDisplayMenu)
 
 lcdDisplay.setCurrentDisplayMenu('temperature')
 
