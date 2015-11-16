@@ -8,11 +8,12 @@ class AirSensor(AbstractSensor):
 		self.airSensor = TP401.TP401(pin)
 		self.precision = precision
 
-		self.readings=deque(smoothing*[0],smoothing)
+		self.smoothing=smoothing
+		self.readings=deque(self.smoothing*[0],self.smoothing)
 
 	def readData(self):
 
 		self.readings.append(self.airSensor.getPPM())
-		self.data = sum(self.readings)/float(smoothing)
+		self.data = sum(self.readings)/float(self.smoothing)
 
 		return round(self.data, self.precision)
