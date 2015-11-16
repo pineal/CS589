@@ -66,7 +66,7 @@ lcdDisplay.setCurrentDisplayMenu('temperature')
 temperatureSensorProxy.start()
 lightSensorProxy.start()
 soundSensorProxy.start()
-airSensor.start()
+airSensorProxy.start()
 buttonSensorProxy.start()
 lcdDisplay.start()
 while 1:
