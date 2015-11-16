@@ -9,6 +9,6 @@ class ChangeLCDDisplayMenuBackgroundColorActuator(object):
 		self.B=B
 
 	def trigger(self):
-		lcdDisplayMenu.R=self.R
-		lcdDisplayMenu.G=self.G
-		lcdDisplayMenu.B=self.B
+		self.lcdDisplayMenu.R=self.R
+		self.lcdDisplayMenu.G=self.G
+		self.lcdDisplayMenu.B=self.B
