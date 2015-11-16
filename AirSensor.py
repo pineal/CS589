@@ -10,4 +10,4 @@ class AirSensor(AbstractSensor):
 	def readData(self):
 
 		self.data = self.airSensor.getPPM()
-		return round(self.data, self.precision)
+		return self.data
