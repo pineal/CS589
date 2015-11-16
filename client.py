@@ -62,7 +62,7 @@ highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundAc
 buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighValueObserver(temperatureSensorProxy,24,[highTemperatureEvent])
+highTemperatureObserver = HighValueObserver(temperatureSensorProxy,20,[highTemperatureEvent])
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 
 # Add Observers
