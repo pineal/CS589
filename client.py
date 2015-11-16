@@ -71,7 +71,9 @@ HIGH_AIR=0
 LOW_AIR=0
 ##############################################
 
-
+##############################################
+#Sub-systems Configuation
+##############################################
 
 #Display
 lcdDisplay=LCDDisplay(LCDDISPLAY_ADDRESS, LCDDISPLAY_RGBADDRESS,LCDDISPLAY_REFRESH_PERIOD)
@@ -110,7 +112,7 @@ buzzerActuator=BuzzerActuator(BUZZER_ACTUATOR_D_PIN)
 toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 temperatureHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,0,0)
-temperatureLowValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,0,0,0)
+temperatureLowValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,255,255)
 lightHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(lightDisplayMenu,255,0,0)
 soundHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(soundDisplayMenu,255,0,0)
 airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,0,0)
@@ -129,6 +131,9 @@ buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEv
 temperatureSensorProxy.addObserver(highTemperatureObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
+##############################################
+#Start Sub-systems
+##############################################
 temperatureSensorProxy.start()
 lightSensorProxy.start()
 soundSensorProxy.start()
