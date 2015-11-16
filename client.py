@@ -53,16 +53,19 @@ buzzerActuator=BuzzerActuator(5)
 toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 temperatureHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,0,0)
+temperatureLowValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,0,0,0)
 lightHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(lightDisplayMenu,255,0,0)
 soundHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(soundDisplayMenu,255,0,0)
 airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,0,0)
 
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
-buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
+lowTemperatureEvent = Event([temperatureLowValueNoBackgroundActuator])
+buttonPressedEvent=Event([toggleLcdDisplayMenuActuator,temperatureLowValueRedBackgroundActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighValueObserver(temperatureSensorProxy,20,[highTemperatureEvent])
+lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,10,[lowTemperatureEvent])
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 
 # Add Observers
