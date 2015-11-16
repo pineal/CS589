@@ -21,9 +21,9 @@ lcdDisplay=LCDDisplay(0x3E, 0x62,1)
 # Sensors
 temperatureSensor = TemperatureSensor(0,'C')
 buttonSensor = ButtonSensor(3)
-lightSensor = LightSensor(1,3)
+lightSensor = LightSensor(1)
 soundSensor = SoundSensor(2)
-airSensor=AirSensor(3)
+airSensor=AirSensor(3,3)
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor, 2)
