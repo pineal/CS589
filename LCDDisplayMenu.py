@@ -7,6 +7,10 @@ class LCDDisplayMenu(object):
 		self.firstLine=""
 		self.secondLine=""
 
+		self.R=0
+		self.G=0
+		self.B=0
+
 	def render(self):
 		self.firstLine=""
 		self.secondLine=""

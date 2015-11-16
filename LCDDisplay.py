@@ -7,12 +7,13 @@ class LCDDisplay(AbstractDisplay):
 	def __init__(self,lcd_address,rgb_address,period):
 		super(LCDDisplay,self).__init__(period)
 		self.lcdDisplay=lcd.Jhd1313m1(0, lcd_address, rgb_address)
-		self.lcdDisplay.setColor(255, 0, 0)
 		self.displayMenus=MyOrderedDict()
 
 	def render(self):
 		self.lcdDisplay.clear()
-		self.currentDisplayMenu.render()
+		self.lcdDisplay.setColor(self.currentDisplayMenu.R,self.currentDisplayMenu.G,self.currentDisplayMenu.B)
+
+		self.currentDisplayMenu.render() #Render the menu's lines
 		self.lcdDisplay.setCursor(0,0)
 		self.lcdDisplay.write(self.currentDisplayMenu.firstLine)
 		self.lcdDisplay.setCursor(1,0)

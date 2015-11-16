@@ -10,6 +10,7 @@ from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
 from HighValueObserver import HighValueObserver
 from ButtonPressedObserver import ButtonPressedObserver
+from ChangeLCDDisplayMenuBackgroundColorActuator import ChangeLCDDisplayMenuBackgroundColorActuator
 from Event import Event
 
 from LCDDisplayMenu import LCDDisplayMenu
@@ -32,22 +33,6 @@ lightSensorProxy = SensorProxy(lightSensor,0.2)
 soundSensorProxy = SensorProxy(soundSensor,0.1)
 airSensorProxy = SensorProxy(airSensor,1,2,20)
 
-# Actuators
-buzzerActuator=BuzzerActuator(5)
-toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
-
-# Events (Initialize with actuators)
-highTemperatureEvent = Event([buzzerActuator])
-buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
-
-# Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighValueObserver(temperatureSensorProxy,24,[highTemperatureEvent])
-buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
-
-# Add Observers
-temperatureSensorProxy.addObserver(highTemperatureObserver)
-buttonSensorProxy.addObserver(buttonPressedObserver)
-
 #Display Menus
 temperatureDisplayMenu=LCDDisplayMenu(["Temp:",temperatureSensorProxy," C"],[])
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," lux"],[])
@@ -62,6 +47,27 @@ lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
 lcdDisplay.addDisplayMenu('air',airDisplayMenu)
 
 lcdDisplay.setCurrentDisplayMenu('temperature')
+
+# Actuators
+buzzerActuator=BuzzerActuator(5)
+toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
+
+temperatureHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,0,0)
+lightHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(lightDisplayMenu,255,0,0)
+soundHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(soundDisplayMenu,255,0,0)
+airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,0,0)
+
+# Events (Initialize with actuators)
+highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
+buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
+
+# Observers (Initialize with proxies they subscribe to and events that should be raised)
+highTemperatureObserver = HighValueObserver(temperatureSensorProxy,24,[highTemperatureEvent])
+buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
+
+# Add Observers
+temperatureSensorProxy.addObserver(highTemperatureObserver)
+buttonSensorProxy.addObserver(buttonPressedObserver)
 
 temperatureSensorProxy.start()
 lightSensorProxy.start()
