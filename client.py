@@ -135,6 +135,8 @@ fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorPro
 
 # Add Observers
 temperatureSensorProxy.addObserver(highTemperatureObserver)
+temperatureSensorProxy.addObserver(fireObserver)
+airSensorProxy.addObserver(fireObserver)
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
 ##############################################
