@@ -9,7 +9,7 @@ class LowValueObserver(AbstractObserver):
             self.normalEvents=normalEvents
 
     def notify(self):
-            if(self.sensorProxy.data>self.lowValue):
+            if(self.sensorProxy.data<self.lowValue):
                 for e in self.events:
                     if(e.thrown==False):
                         e.throw()
