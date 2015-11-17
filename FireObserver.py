@@ -10,6 +10,9 @@ class FireObserver(AbstractObserver):
             self.fireAir=fireAir
 
 	def notify(self):
+            print "Notified"
+            print "Temperatue: " + self.temperatureSensorProxy.data
+            print "Air: " + self.airSensorProxy.data
             if(self.temperatureSensorProxy.data>=self.fireTemperature and self.airSensorProxy.data>=self.fireAir):
                 for e in self.events:
                         e.throw()
