@@ -1,4 +1,4 @@
-class AbstractObserver(object):
+class AbstractActuator(object):
 
-	def notify():
+	def trigger(self):
 		raise NotImplementedError( "Should have implemented this" )
