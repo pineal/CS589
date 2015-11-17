@@ -33,7 +33,7 @@ class SensorProxy(threading.Thread):
 		self.readings.append(self.sensor.readData())
 
 		if(self.readingsCounter<self.smoothing):
-			self.readingsCounter++
+			self.readingsCounter=self.readingsCounter+1
 
 		self.data=round(sum(self.readings)/float(self.readingsCounter),self.precision)
 		################
