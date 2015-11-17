@@ -126,6 +126,7 @@ airNormalValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(a
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
 lowTemperatureEvent = Event([buzzerActuator,temperatureLowValueBlueBackgroundActuator])
+lowTemperatureEvent.thrown=True
 normalTemperatureEvent = Event([temperatureNormalValueNoBackgroundActuator])
 
 highLightEvent = Event([buzzerActuator,lightHighValueRedBackgroundActuator])
@@ -155,7 +156,7 @@ fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorPro
 
 # Add Observers
 temperatureSensorProxy.addObserver(highTemperatureObserver)
-#temperatureSensorProxy.addObserver(lowTemperatureObserver)
+temperatureSensorProxy.addObserver(lowTemperatureObserver)
 temperatureSensorProxy.addObserver(fireObserver)
 
 airSensorProxy.addObserver(fireObserver)
