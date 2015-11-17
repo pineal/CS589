@@ -32,7 +32,7 @@ TEMPERATURE_SENSOR_A_PIN=0
 TEMPERATURE_SENSOR_UNIT='C'
 TEMPERATURE_SENSOR_REFRESH_PERIOD=2
 TEMPERATURE_SENSOR_PRECISION=1
-TEMPERATURE_SENSOR_AVERAGE_SAMPLES=10
+TEMPERATURE_SENSOR_AVERAGE_SAMPLES=20
 
 #Button Sensor
 BUTTON_SENSOR_D_PIN=3
@@ -62,9 +62,9 @@ BUZZER_ACTUATOR_D_PIN=5
 HIGH_TEMPERATURE=23.7
 LOW_TEMPERATURE=10
 
-HIGH_SOUND=0
+HIGH_SOUND=600
 
-HIGH_LIGHT=0
+HIGH_LIGHT=70
 
 HIGH_AIR=30
 
@@ -146,7 +146,7 @@ lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE
 
 highLightObserver = HighValueObserver(lightSensorProxy,HIGH_LIGHT,[highLightEvent],[normalLightEvent])
 
-highSoundObserver = HighValueObserver(soundSensorProxy,HIGH_SOUND,[highSoundEvent],[normalSoundEvent])
+highSoundObserver = LowValueObserver(soundSensorProxy,HIGH_SOUND,[highSoundEvent],[normalSoundEvent])
 
 highAirObserver = HighValueObserver(airSensorProxy,HIGH_AIR,[highAirEvent],[normalAirEvent])
 
@@ -155,6 +155,7 @@ fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorPro
 
 # Add Observers
 temperatureSensorProxy.addObserver(highTemperatureObserver)
+temperatureSensorProxy.addObserver(lowTemperatureObserver)
 temperatureSensorProxy.addObserver(fireObserver)
 
 airSensorProxy.addObserver(fireObserver)
