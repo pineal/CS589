@@ -3,7 +3,7 @@ import time
 from collections import deque
 
 class SensorProxy(threading.Thread):
-	def __init__(self,sensor,period,precision=1,smoothing=1):
+	def __init__(self,sensor,period,precision=1,smoothing=1,dismiss=0):
 		threading.Thread.__init__(self)
 		self.sensor=sensor
 		self.observers=[]
@@ -15,6 +15,9 @@ class SensorProxy(threading.Thread):
 		self.smoothing=smoothing
 		self.readings=deque(self.smoothing*[0],self.smoothing)
 		self.readingsCounter=0
+
+		self.dismiss=dismiss
+		self.dismissCounter=0
 
 	def run(self):
 		print "Starting SensorProxy thread"
@@ -28,7 +31,12 @@ class SensorProxy(threading.Thread):
 			observer.notify()
 
 	def update(self):
-		################
+
+		if(self.dismissCounter<self.dismiss)
+			self.sensor.readData()#Dismiss reading
+			self.dismissCounter=self.dismissCounter+1
+			return
+
 		#Smooth readings and round result
 		self.readings.append(self.sensor.readData())
 
@@ -36,7 +44,6 @@ class SensorProxy(threading.Thread):
 			self.readingsCounter=self.readingsCounter+1
 
 		self.data=round(sum(self.readings)/float(self.readingsCounter),self.precision)
-		################
 
 		self.notifyObservers()
 
