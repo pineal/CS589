@@ -60,7 +60,7 @@ BUZZER_ACTUATOR_D_PIN=5
 ##############################################
 #Observer Constants
 ##############################################
-HIGH_TEMPERATURE=23.7
+HIGH_TEMPERATURE=22
 LOW_TEMPERATURE=10
 
 HIGH_SOUND=600
