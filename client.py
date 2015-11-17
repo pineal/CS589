@@ -125,7 +125,7 @@ airNormalValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(a
 
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
-lowTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
+lowTemperatureEvent = Event([buzzerActuator,temperatureLowValueBlueBackgroundActuator])
 normalTemperatureEvent = Event([temperatureNormalValueNoBackgroundActuator])
 
 highLightEvent = Event([buzzerActuator,lightHighValueRedBackgroundActuator])
