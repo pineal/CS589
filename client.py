@@ -32,7 +32,7 @@ TEMPERATURE_SENSOR_A_PIN=0
 TEMPERATURE_SENSOR_UNIT='C'
 TEMPERATURE_SENSOR_REFRESH_PERIOD=2
 TEMPERATURE_SENSOR_PRECISION=1
-TEMPERATURE_SENSOR_AVERAGE_SAMPLES=1
+TEMPERATURE_SENSOR_AVERAGE_SAMPLES=10
 
 #Button Sensor
 BUTTON_SENSOR_D_PIN=3
@@ -71,7 +71,7 @@ LOW_LIGHT=0
 HIGH_AIR=0
 LOW_AIR=0
 
-FIRE_TEMPERATURE=30
+FIRE_TEMPERATURE=20
 FIRE_AIR=2
 ##############################################
 
@@ -100,11 +100,9 @@ airSensorProxy = SensorProxy(airSensor,AIR_SENSOR_REFRESH_PERIOD,AIR_SENSOR_PREC
 temperatureDisplayMenu=LCDDisplayMenu(["Temp:",temperatureSensorProxy," ",TEMPERATURE_SENSOR_UNIT],[])
 lightDisplayMenu=LCDDisplayMenu(["Light:",lightSensorProxy," ",LIGHT_SENSOR_UNIT],[])
 soundDisplayMenu=LCDDisplayMenu(["Sound:",soundSensorProxy],[])
-buttonDisplayMenu=LCDDisplayMenu(["Button: ",buttonSensorProxy],[])
 airDisplayMenu=LCDDisplayMenu(["Air: ",airSensorProxy, " ",AIR_SENSOR_UNIT],[])
 
 lcdDisplay.addDisplayMenu('temperature',temperatureDisplayMenu)
-lcdDisplay.addDisplayMenu('button',buttonDisplayMenu)
 lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
 lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
 lcdDisplay.addDisplayMenu('air',airDisplayMenu)
