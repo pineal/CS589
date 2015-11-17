@@ -155,7 +155,7 @@ fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorPro
 
 # Add Observers
 temperatureSensorProxy.addObserver(highTemperatureObserver)
-temperatureSensorProxy.addObserver(lowTemperatureObserver)
+#temperatureSensorProxy.addObserver(lowTemperatureObserver)
 temperatureSensorProxy.addObserver(fireObserver)
 
 airSensorProxy.addObserver(fireObserver)
