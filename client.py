@@ -45,7 +45,7 @@ LIGHT_SENSOR_UNIT='lux'
 
 #Sound Sensor
 SOUND_SENSOR_A_PIN=2
-SOUND_SENSOR_REFRESH_PERIOD=0.1
+SOUND_SENSOR_REFRESH_PERIOD=1
 
 #Air Sensor
 AIR_SENSOR_A_PIN=3
@@ -63,16 +63,13 @@ HIGH_TEMPERATURE=20
 LOW_TEMPERATURE=10
 
 HIGH_SOUND=0
-LOW_SOUND=0
 
 HIGH_LIGHT=0
-LOW_LIGHT=0
 
-HIGH_AIR=0
-LOW_AIR=0
+HIGH_AIR=30
 
-FIRE_TEMPERATURE=20
-FIRE_AIR=2
+FIRE_TEMPERATURE=30
+FIRE_AIR=70
 ##############################################
 
 ##############################################
@@ -114,20 +111,22 @@ buzzerActuator=BuzzerActuator(BUZZER_ACTUATOR_D_PIN)
 toggleLcdDisplayMenuActuator=ToggleLcdDisplayMenuActuator(lcdDisplay)
 
 temperatureHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,0,0)
-temperatureLowValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,255,255)
+temperatureNormalValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,255,255,255)
+temperatureLowValueBlueBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(temperatureDisplayMenu,0,0,255)
 lightHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(lightDisplayMenu,255,0,0)
 soundHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(soundDisplayMenu,255,0,0)
 airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,0,0)
 
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
-lowTemperatureEvent = Event([temperatureLowValueNoBackgroundActuator])
+lowTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
+normalTemperatureEvent = Event([temperatureNormalValueNoBackgroundActuator])
 buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 fireEvent=Event([buzzerActuator,temperatureHighValueRedBackgroundActuator,airHighValueRedBackgroundActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-highTemperatureObserver = HighValueObserver(temperatureSensorProxy,HIGH_TEMPERATURE,[highTemperatureEvent])
-lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent])
+highTemperatureObserver = HighValueObserver(temperatureSensorProxy,HIGH_TEMPERATURE,[highTemperatureEvent],[normalTemperatureEvent])
+lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent],[normalTemperatureEvent])
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
 
