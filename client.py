@@ -161,7 +161,7 @@ temperatureSensorProxy.addObserver(fireObserver)
 airSensorProxy.addObserver(fireObserver)
 airSensorProxy.addObserver(highAirObserver)
 
-soundSensorProxy.addObserver(highSoundObserver)
+#soundSensorProxy.addObserver(highSoundObserver)
 
 lightSensorProxy.addObserver(highLightObserver)
 
