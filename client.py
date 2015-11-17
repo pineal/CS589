@@ -142,8 +142,6 @@ buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 fireEvent=Event([buzzerActuator,temperatureHighValueRedBackgroundActuator,airHighValueRedBackgroundActuator])
 
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
-#highTemperatureObserver = HighValueObserver(temperatureSensorProxy,HIGH_TEMPERATURE,[highTemperatureEvent],[normalTemperatureEvent])
-#lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent],[normalTemperatureEvent])
 lowHighTemperatureObserver=LowHighValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent],HIGH_TEMPERATURE,[highTemperatureEvent],[normalTemperatureEvent])
 
 highLightObserver = HighValueObserver(lightSensorProxy,HIGH_LIGHT,[highLightEvent],[normalLightEvent])
@@ -156,8 +154,6 @@ buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEv
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
 
 # Add Observers
-#temperatureSensorProxy.addObserver(highTemperatureObserver)
-#temperatureSensorProxy.addObserver(lowTemperatureObserver)
 temperatureSensorProxy.addObserver(lowHighTemperatureObserver)
 temperatureSensorProxy.addObserver(fireObserver)
 
