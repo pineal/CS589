@@ -14,6 +14,7 @@ class SensorProxy(threading.Thread):
 
 		self.smoothing=smoothing
 		self.readings=deque(self.smoothing*[0],self.smoothing)
+		self.readingsCounter=0
 
 	def run(self):
 		print "Starting SensorProxy thread"
@@ -30,7 +31,11 @@ class SensorProxy(threading.Thread):
 		################
 		#Smooth readings and round result
 		self.readings.append(self.sensor.readData())
-		self.data=round(sum(self.readings)/float(self.smoothing),self.precision)
+
+		if(self.readingsCounter<self.smoothing):
+			self.readingsCounter++
+
+		self.data=round(sum(self.readings)/float(self.readingsCounter),self.precision)
 		################
 
 		self.notifyObservers()
