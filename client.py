@@ -105,7 +105,7 @@ lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
 lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
 lcdDisplay.addDisplayMenu('air',airDisplayMenu)
 
-lcdDisplay.setCurrentDisplayMenu('temperature')
+lcdDisplay.setCurrentDisplayMenu('sound')
 
 # Actuators
 buzzerActuator=BuzzerActuator(BUZZER_ACTUATOR_D_PIN)
@@ -160,7 +160,7 @@ temperatureSensorProxy.addObserver(fireObserver)
 airSensorProxy.addObserver(fireObserver)
 airSensorProxy.addObserver(highAirObserver)
 
-#soundSensorProxy.addObserver(highSoundObserver)
+soundSensorProxy.addObserver(highSoundObserver)
 
 lightSensorProxy.addObserver(highLightObserver)
 
