@@ -35,6 +35,7 @@ class SensorProxy(threading.Thread):
 		if(self.dismissCounter<self.dismiss):
 			self.sensor.readData()#Dismiss reading
 			self.dismissCounter=self.dismissCounter+1
+			self.data="Initializing"
 			return
 
 		#Smooth readings and round result
