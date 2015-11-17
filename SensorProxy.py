@@ -32,7 +32,7 @@ class SensorProxy(threading.Thread):
 
 	def update(self):
 
-		if(self.dismissCounter<self.dismiss)
+		if(self.dismissCounter<self.dismiss):
 			self.sensor.readData()#Dismiss reading
 			self.dismissCounter=self.dismissCounter+1
 			return
