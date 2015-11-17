@@ -71,8 +71,8 @@ LOW_LIGHT=0
 HIGH_AIR=0
 LOW_AIR=0
 
-FIRE_TEMPERATURE=30
-FIRE_AIR=6
+FIRE_TEMPERATURE=10
+FIRE_AIR=2
 ##############################################
 
 ##############################################
@@ -130,7 +130,7 @@ fireEvent=Event([buzzerActuator,temperatureHighValueRedBackgroundActuator,airHig
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighValueObserver(temperatureSensorProxy,HIGH_TEMPERATURE,[highTemperatureEvent])
 lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent])
-buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[fireEvent])
+buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
 
 # Add Observers
