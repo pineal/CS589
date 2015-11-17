@@ -130,7 +130,7 @@ fireEvent=Event([buzzerActuator,temperatureHighValueRedBackgroundActuator,airHig
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 highTemperatureObserver = HighValueObserver(temperatureSensorProxy,HIGH_TEMPERATURE,[highTemperatureEvent])
 lowTemperatureObserver = LowValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent])
-buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
+buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[fireEvent])
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
 
 # Add Observers
