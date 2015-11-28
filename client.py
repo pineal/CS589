@@ -6,12 +6,14 @@ from LightSensor import LightSensor
 from AirSensor import AirSensor
 from SoundSensor import SoundSensor
 from ButtonSensor import ButtonSensor
+from DummySensor import DummySensor
 from BuzzerActuator import BuzzerActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
 from HighValueObserver import HighValueObserver
 from LowValueObserver import LowValueObserver
 from LowHighValueObserver import LowHighValueObserver
 from ButtonPressedObserver import ButtonPressedObserver
+from TimeObserver import TimeObserver
 from FireObserver import FireObserver
 from ChangeLCDDisplayMenuBackgroundColorActuator import ChangeLCDDisplayMenuBackgroundColorActuator
 from Event import Event
@@ -57,6 +59,12 @@ AIR_SENSOR_PRECISION=2
 AIR_SENSOR_AVERAGE_SAMPLES=20
 AIR_SENSOR_UNIT='ppm'
 
+###############################
+#Cloud updates
+CLOUD_SENSOR_REFRESH_PERIOD=5
+
+###############################
+
 #Buzzer Actuator
 BUZZER_ACTUATOR_D_PIN=5
 ##############################################
@@ -88,6 +96,7 @@ buttonSensor = ButtonSensor(BUTTON_SENSOR_D_PIN)
 lightSensor = LightSensor(LIGHT_SENSOR_A_PIN)
 soundSensor = SoundSensor(SOUND_SENSOR_A_PIN)
 airSensor=AirSensor(AIR_SENSOR_A_PIN)
+dummySensor=DummySensor()
 
 # SensorProxies (Initialize with sensor)
 temperatureSensorProxy = SensorProxy(temperatureSensor,TEMPERATURE_SENSOR_REFRESH_PERIOD,TEMPERATURE_SENSOR_PRECISION,TEMPERATURE_SENSOR_AVERAGE_SAMPLES)
@@ -95,6 +104,7 @@ buttonSensorProxy = SensorProxy(buttonSensor, BUTTON_SENSOR_REFRESH_PERIOD)
 lightSensorProxy = SensorProxy(lightSensor,LIGHT_SENSOR_REFRESH_PERIOD)
 soundSensorProxy = SensorProxy(soundSensor,SOUND_SENSOR_REFRESH_PERIOD,SOUND_SENSOR_PRECISION,SOUND_SENSOR_AVERAGE_SAMPLES,3)
 airSensorProxy = SensorProxy(airSensor,AIR_SENSOR_REFRESH_PERIOD,AIR_SENSOR_PRECISION,AIR_SENSOR_AVERAGE_SAMPLES)
+timeSensorProxy = SensorProxy(dummySensor,CLOUD_SENSOR_REFRESH_PERIOD)
 
 #Display Menus
 temperatureDisplayMenu=LCDDisplayMenu(["Temp:",temperatureSensorProxy," ",TEMPERATURE_SENSOR_UNIT],[])
@@ -126,6 +136,8 @@ soundNormalValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator
 airHighValueRedBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,0,0)
 airNormalValueNoBackgroundActuator=ChangeLCDDisplayMenuBackgroundColorActuator(airDisplayMenu,255,255,255)
 
+updateCloudActuator=UpdateCloudActuator(CLOUD_UPDATE_URL,[temperatureSensorProxy,airSensorProxy,soundSensorProxy,lightSensorProxy])
+
 # Events (Initialize with actuators)
 highTemperatureEvent = Event([buzzerActuator,temperatureHighValueRedBackgroundActuator])
 lowTemperatureEvent = Event([buzzerActuator,temperatureLowValueBlueBackgroundActuator])
@@ -143,6 +155,8 @@ normalAirEvent = Event([airNormalValueNoBackgroundActuator])
 buttonPressedEvent=Event([toggleLcdDisplayMenuActuator])
 fireEvent=Event([buzzerActuator,temperatureHighValueRedBackgroundActuator,airHighValueRedBackgroundActuator])
 
+updateCloudEvent=Event([updateCloudActuator])
+
 # Observers (Initialize with proxies they subscribe to and events that should be raised)
 lowHighTemperatureObserver=LowHighValueObserver(temperatureSensorProxy,LOW_TEMPERATURE,[lowTemperatureEvent],HIGH_TEMPERATURE,[highTemperatureEvent],[normalTemperatureEvent])
 
@@ -154,6 +168,8 @@ highAirObserver = HighValueObserver(airSensorProxy,HIGH_AIR,[highAirEvent],[norm
 
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
+
+timeObserver = TimeObserver([updateCloudEvent])
 
 # Add Observers
 temperatureSensorProxy.addObserver(lowHighTemperatureObserver)
@@ -168,6 +184,8 @@ lightSensorProxy.addObserver(highLightObserver)
 
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
+timeSensorProxy.addObserver(timeObserver)
+
 ##############################################
 #Start Sub-systems
 ##############################################
@@ -176,4 +194,5 @@ lightSensorProxy.start()
 soundSensorProxy.start()
 airSensorProxy.start()
 buttonSensorProxy.start()
+timeSensorProxy.start()
 lcdDisplay.start()
