@@ -19,4 +19,4 @@ class UpdateCloudActuator(AbstractActuator):
 
 		r=requests.post(self.cloudUrl,json=self.payload)
 		print 'Sent the following update to the cloud:'
-		print r.text
+		print self.payload
