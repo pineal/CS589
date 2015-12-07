@@ -63,7 +63,7 @@ AIR_SENSOR_UNIT='ppm'
 ###############################
 #Cloud updates
 CLOUD_SENSOR_REFRESH_PERIOD=5
-
+CLOUD_UPDATE_URL='localhost/send'
 ###############################
 
 #Buzzer Actuator
