@@ -1,6 +1,6 @@
 from AbstractSensor import AbstractSensor
 
-class SoundSensor(AbstractSensor):
+class DummySensor(AbstractSensor):
 
 	def readData(self):
 		return 0
