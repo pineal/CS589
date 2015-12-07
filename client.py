@@ -8,6 +8,7 @@ from SoundSensor import SoundSensor
 from ButtonSensor import ButtonSensor
 from DummySensor import DummySensor
 from BuzzerActuator import BuzzerActuator
+from UpdateCloudActuator import UpdateCloudActuator
 from ToggleLcdDisplayMenuActuator import ToggleLcdDisplayMenuActuator
 from HighValueObserver import HighValueObserver
 from LowValueObserver import LowValueObserver
