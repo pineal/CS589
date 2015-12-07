@@ -170,7 +170,7 @@ highAirObserver = HighValueObserver(airSensorProxy,HIGH_AIR,[highAirEvent],[norm
 buttonPressedObserver = ButtonPressedObserver(buttonSensorProxy,[buttonPressedEvent])
 fireObserver = FireObserver(temperatureSensorProxy,FIRE_TEMPERATURE,airSensorProxy,FIRE_AIR,[fireEvent])
 
-timeObserver = TimeObserver([updateCloudEvent])
+updateCloudtimeObserver = TimeObserver([updateCloudEvent])
 
 # Add Observers
 temperatureSensorProxy.addObserver(lowHighTemperatureObserver)
@@ -185,7 +185,7 @@ lightSensorProxy.addObserver(highLightObserver)
 
 buttonSensorProxy.addObserver(buttonPressedObserver)
 
-timeSensorProxy.addObserver(timeObserver)
+timeSensorProxy.addObserver(updateCloudtimeObserver)
 
 ##############################################
 #Start Sub-systems
