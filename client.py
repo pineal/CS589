@@ -62,7 +62,7 @@ AIR_SENSOR_UNIT='ppm'
 
 ###############################
 #Cloud updates
-CLOUD_SENSOR_REFRESH_PERIOD=5
+CLOUD_SENSOR_REFRESH_PERIOD=10
 CLOUD_UPDATE_URL='localhost/send'
 ###############################
 
@@ -118,7 +118,7 @@ lcdDisplay.addDisplayMenu('light',lightDisplayMenu)
 lcdDisplay.addDisplayMenu('sound',soundDisplayMenu)
 lcdDisplay.addDisplayMenu('air',airDisplayMenu)
 
-lcdDisplay.setCurrentDisplayMenu('sound')
+lcdDisplay.setCurrentDisplayMenu('temperature')
 
 # Actuators
 buzzerActuator=BuzzerActuator(BUZZER_ACTUATOR_D_PIN)
