@@ -68,7 +68,7 @@ AIR_SENSOR_MACHINE_NAME='air'
 ###############################
 #Cloud updates
 CLOUD_SENSOR_REFRESH_PERIOD=10
-CLOUD_UPDATE_URL='localhost/send'
+CLOUD_UPDATE_URL='http://localhost:8080/send'
 ###############################
 
 #Buzzer Actuator

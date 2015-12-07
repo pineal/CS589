@@ -1,5 +1,6 @@
 from AbstractActuator import AbstractActuator
 import json
+import requests
 
 class UpdateCloudActuator(AbstractActuator):
 
@@ -16,4 +17,6 @@ class UpdateCloudActuator(AbstractActuator):
 		for sensorProxy in self.sensorProxies:
 			self.payload[sensorProxy.name]=str(sensorProxy.data)
 
-		print json.dumps(self.payload)
+		r=requests.post(self.cloudUrl,data=json.dumps(self.payload)
+		print 'Sent the following update to the cloud:'
+		print r.text
