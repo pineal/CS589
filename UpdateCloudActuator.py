@@ -1,7 +1,5 @@
 from AbstractActuator import AbstractActuator
 import json
-from json import encoder
-encoder.FLOAT_REPR = lambda o: format(o, '.2f')
 
 class UpdateCloudActuator(AbstractActuator):
 
@@ -16,6 +14,6 @@ class UpdateCloudActuator(AbstractActuator):
 
 	def updateCloud(self):
 		for sensorProxy in self.sensorProxies:
-			self.payload[sensorProxy.name]=sensorProxy.data
+			self.payload[sensorProxy.name]=str(sensorProxy.data)
 
 		print json.dumps(self.payload)
