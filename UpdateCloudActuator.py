@@ -1,6 +1,7 @@
 from AbstractActuator import AbstractActuator
 import json
 from json import encoder
+encoder.FLOAT_REPR = lambda o: format(o, '.2f')
 
 class UpdateCloudActuator(AbstractActuator):
 
@@ -8,7 +9,6 @@ class UpdateCloudActuator(AbstractActuator):
 		self.cloudUrl=cloudUrl
 		self.sensorProxies=sensorProxies
 		self.payload={}
-		encoder.FLOAT_REPR = lambda o: format(o, '.2f')
 
 	def trigger(self):
 		print "Update request sent to the cloud"
