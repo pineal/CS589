@@ -8,7 +8,7 @@ class UpdateCloudActuator(AbstractActuator):
 
 	def trigger(self):
 		print "Update request sent to the cloud"
-		updateCloud()
+		self.updateCloud()
 
 	def updateCloud(self):
 		pass
