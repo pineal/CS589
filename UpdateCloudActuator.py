@@ -17,6 +17,6 @@ class UpdateCloudActuator(AbstractActuator):
 		for sensorProxy in self.sensorProxies:
 			self.payload[sensorProxy.name]=str(sensorProxy.data)
 
-		r=requests.post(self.cloudUrl,json=json.dumps(self.payload))
+		r=requests.post(self.cloudUrl,json=self.payload)
 		print 'Sent the following update to the cloud:'
 		print r.text
