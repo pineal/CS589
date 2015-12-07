@@ -1,4 +1,5 @@
 from AbstractActuator import AbstractActuator
+import json
 
 class UpdateCloudActuator(AbstractActuator):
 
@@ -11,4 +12,7 @@ class UpdateCloudActuator(AbstractActuator):
 		self.updateCloud()
 
 	def updateCloud(self):
-		pass
+		for sensorProxy in self.sensorProxies:
+			payload[sensorProxy.name]=sensorProxy.data
+
+		print json.dumps(payload)

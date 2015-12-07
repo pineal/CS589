@@ -3,8 +3,9 @@ import time
 from collections import deque
 
 class SensorProxy(threading.Thread):
-	def __init__(self,sensor,period,precision=1,smoothing=1,dismiss=0):
+	def __init__(self,name,sensor,period,precision=1,smoothing=1,dismiss=0):
 		threading.Thread.__init__(self)
+		self.name=name
 		self.sensor=sensor
 		self.observers=[]
 		self.period=period
