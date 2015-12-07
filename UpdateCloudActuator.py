@@ -15,5 +15,6 @@ class UpdateCloudActuator(AbstractActuator):
 	def updateCloud(self):
 		for sensorProxy in self.sensorProxies:
 			self.payload[sensorProxy.name]=round(sensorProxy.data,sensorProxy.precision)
+			print sensorProxy.data
 
 		print json.dumps(self.payload)
